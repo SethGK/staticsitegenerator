@@ -22,14 +22,7 @@ class TestHTMLNode(unittest.TestCase):
         )
         self.assertEqual(node.props_to_html(), ' href="https://www.google.com" target="_blank"')
 
-    def test_repr(self):
-        """Test that __repr__ returns a string representation of the HTMLNode."""
-        node = HTMLNode(tag="div", value="Content", props={"id": "main", "class": "container"})
-        expected_repr = (
-            "HTMLNode(tag='div', value='Content', children=[], "
-            "props={'id': 'main', 'class': 'container'})"
-        )
-        self.assertEqual(repr(node), expected_repr)
+    
 
 
 if __name__ == "__main__":

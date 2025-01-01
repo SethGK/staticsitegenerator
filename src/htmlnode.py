@@ -14,10 +14,6 @@ class HTMLNode:
         return "".join(f' {key}="{value}"' for key, value in self.props.items())
 
     def __repr__(self):
-        return (
-            f"HTMLNode("
-            f"tag={self.tag!r}, "
-            f"value={self.value!r}, "
-            f"children={self.children}, "
-            f"props={self.props})"
-        )
+        return f"HTMLNode({self.tag}, {self.value}, children: {self.children}, {self.props})"
+    
+    
