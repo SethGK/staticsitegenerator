@@ -11,7 +11,7 @@ class TestSplitNodes(unittest.TestCase):
         new_nodes = split_nodes_image([node])
         expected_nodes = [
             TextNode("This is text with an ", TextType.NORMAL),
-            TextNode("", TextType.IMAGE, "https://example.com/image.png"),
+            TextNode("example", TextType.IMAGE, "https://example.com/image.png"),  # Updated here
             TextNode(" in it", TextType.NORMAL),
         ]
         self.assertEqual(new_nodes, expected_nodes)
@@ -25,7 +25,7 @@ class TestSplitNodes(unittest.TestCase):
         new_nodes = split_nodes_link(new_nodes)
         expected_nodes = [
             TextNode("This is text with an ", TextType.NORMAL),
-            TextNode("", TextType.IMAGE, "https://example.com/image.png"),
+            TextNode("example", TextType.IMAGE, "https://example.com/image.png"),  # Updated here
             TextNode(" and ", TextType.NORMAL),
             TextNode("a link", TextType.LINK, "https://example.com"),
             TextNode(" in it", TextType.NORMAL),
