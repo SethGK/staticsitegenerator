@@ -55,7 +55,15 @@ def generate_page(from_path,template_path,dest_path):
     with open(dest_path, "w") as f:
         f.write(full_page)
 
-    print(f"Page generated at {dest_path}")
+def generate_page_recursive(dir_path_content, template_path, dest_dir_path):
+    for root, _, files in os.walk(dir_path_content):
+        for file in files:
+            if file.endswith(".md"):
+                markdown_path = os.path.join(root, file)
+                relative_path = os.path.relpath(markdown_path, dir_path_content)
+                output_path = os.path.join(dest_dir_path, relative_path).replace(".md", ".html")
+
+                generate_page(markdown_path, template_path, output_path)
 
 def main():
     if os.path.exists("public"):
@@ -67,4 +75,9 @@ def main():
     
 
 if __name__ == "__main__":
-    main()
+    dir_path_content = "content"
+    template_path = "template.html"
+    dest_dir_path = "public"
+    generate_page_recursive(dir_path_content, template_path, dest_dir_path)
+    
+
